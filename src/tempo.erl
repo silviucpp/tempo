@@ -24,7 +24,7 @@
 %%%
 %%% A <em>Format</em> argument to any of the exported functions is
 %%% either a {@type binary()} with strptime/strftime compatible tokens or
-%%% one of the following atoms: iso8601, rfc1123, rfc2822. In the latter
+%%% one of the following atoms: solr, iso8601, rfc1123, rfc2822. In the latter
 %%% case a predefined format will be used.
 %%%
 %%% *A note about 32-bit systems*
@@ -58,6 +58,7 @@
 -type unix_timestamp() :: float().
 -type format()         :: binary()
                         | iso8601
+                        | solr
                         | rfc1123
                         | rfc2822.
 -type datetime_type()  :: unix
@@ -188,6 +189,7 @@ format_datetime(Format, Datetime) ->
 %% @end
 -spec convert_format(format()) -> binary().
 convert_format(X) when is_binary(X) -> X;
+convert_format(solr)    -> <<"%Y-%m-%dT%H:%M:%SZ">>;
 convert_format(iso8601) -> <<"%Y-%m-%dT%H:%M:%S%z">>;
 convert_format(rfc1123) -> <<"%a, %d %b %Y %H:%M:%S GMT">>;
 convert_format(rfc2822) -> <<"%a, %d %b %Y %H:%M:%S +0000">>;

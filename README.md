@@ -32,9 +32,11 @@ and [`tempo:format/2`](https://github.com/selectel/tempo/blob/master/doc/tempo.m
 
 As you might have noticed, both of the functions follow a common
 pattern -- *Format* first, then a *Value*, tagged by its actual
-or expected type. Predefined formats include: `iso8601`, `rfc1123`,
+or expected type. Predefined formats include: `solr`, `iso8601`, `rfc1123`,
 and `rfc2822`, but in fact, you can use any format, as long as it
 follows libc conventions:
+
+Solr date tipe format is described [here][1] 
 
 ```
 (tempo_dev@localhost)1> {ok, Bin} = tempo:format(<<"%A, %Y-%d-%m">>, {now, now()}).
@@ -55,3 +57,4 @@ unavoidable. Here's a shortlist of those we know of:
 <table width="100%" border="0" summary="list of modules">
 <tr><td><a href="https://github.com/selectel/tempo/blob/master/doc/tempo.md" class="module">tempo</a></td></tr></table>
 
+[1]: https://cwiki.apache.org/confluence/display/solr/Working+with+Dates
